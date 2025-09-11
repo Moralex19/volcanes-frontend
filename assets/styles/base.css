@@ -1,0 +1,64 @@
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playpen+Sans:wght@100..800&display=swap');
+
+/* Variables de colores */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6895c6;
+  --gradient-start: #f12711;
+  --gradient-end: #00ddff;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --text-heading-color: #000;
+  --button-hover: #0056b3;
+  --border-radius: 5px;
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Playpen Sans', cursive;
+  --navbar-bg: rgba(219, 20, 20, 0.8); 
+  --text-color: #080808; 
+  
+}
+
+/* Estilos globales */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 80px;
+  font-family: var(--font-primary);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Personalización de botones */
+button {
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-hover);
+}
+
+.popup-class {
+  background: var(--background-color);
+  border-radius: 1rem;
+}
+
+.confirm-button {
+  background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+  border-radius: var(--border-radius);
+}

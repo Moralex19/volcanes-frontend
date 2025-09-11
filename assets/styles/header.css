@@ -1,0 +1,46 @@
+@import './base.css';
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+header.transparent {
+  background-color: transparent;
+}
+
+header.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: auto;
+  font-family: var(--font-primary);
+}
+
+.nav-link {
+  background-image: linear-gradient(150deg, var(--gradient-start), var(--gradient-end));
+  border-radius: 8px;
+  color: #fff;
+  padding: 4px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background: none;
+}

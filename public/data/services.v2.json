@@ -1,0 +1,39 @@
+{
+  "title": "Visita nuestras secciones",
+  "balconeriaServices": [
+    {
+      "title": "Cultura",
+      "description": "Diseño y fabricación de barandales de aluminio, ideales para exteriores e interiores, con alta resistencia a la corrosión.",
+      "image": "barandalesAluminio.jpeg"
+    },
+    {
+      "title": "Poesia",
+      "description": "Instalación profesional de barandales de cristal templado, combinando seguridad y diseño moderno.",
+      "image": "barandalesCristal.jpeg"
+    },
+    {
+      "title": "Sociales",
+      "description": "Fabricación e instalación de rejas de protección para ventanas y puertas, ofreciendo seguridad sin sacrificar el diseño.",
+      "image": "rejasProteccion.jpeg"
+    },
+    {
+      "title": "Salud",
+      "description": "Construcción de cerramientos de balcones para aumentar la seguridad y la protección contra el clima.",
+      "image": "cerramientosBalcones.jpeg"
+    },
+    {
+      "title": "Turismo",
+      "description": "Diseño e instalación de escaleras metálicas personalizadas, con acabados resistentes y de gran durabilidad.",
+      "image": "escalerasMetalicas.jpeg"
+    },
+    {
+      "title": "Planeta",
+      "description": "Fabricación e instalación de puertas de aluminio y cristal con diseños personalizados, ideales para hogares y negocios.",
+      "image": "puertasaluminiocristal.jpeg"
+    },{
+      "title": "Deporte",
+      "description": "Fabricación e instalación de puertas de aluminio y cristal con diseños personalizados, ideales para hogares y negocios.",
+      "image": "puertasaluminiocristal.jpeg"
+    }
+  ]
+}

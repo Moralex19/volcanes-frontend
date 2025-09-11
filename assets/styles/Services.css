@@ -1,0 +1,16 @@
+@import './base.css';
+
+.container-principal {
+  font-family: var(--font-secondary);
+}
+
+/* Animación de aparición */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

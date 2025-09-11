@@ -1,0 +1,30 @@
+{
+    "footer": {
+      "backgroundColor": "#192733",
+      "textColor": "#ffffff",
+      "linkColor": "#d1d1d1",
+      "hoverLinkColor": "#ffffff",
+      "borderColor": "rgba(255, 255, 255, 0.1)",
+      "socialIconColor": {
+        "email": "#6c759d",
+        "facebook": "#4267b2",
+        "instagram": "#c13584",
+        "whatsapp": "#25d366"
+      },
+      "derechos": "Torre Fuerte. Todos los derechos reservados.",
+      "p1": "Es un taller especializado en trabajos de herrería en general.",
+      "p2": "Dirección: Calle Taller 456, Ciudad de México, México",
+      "p3": "Tel: +52 5551234567",
+      "p4": "Mail: contacto@tallerespecializado.com",
+      "¿QUÉ HACEMOS?": "¿QUÉ HACEMOS?",
+      "l1": "Puertas y Portones",
+      "l2": "Estructuras de metal",
+      "l3": "Protecciones y barandales",
+      "l4": "Trabajos en cristal",
+      "l5": "Herrería artística y decorativa",
+      "Terminos": "Términos y Condiciones",
+      "Privacidad": "Aviso de Privacidad",
+      "Redes": "SÍGUENOS EN REDES"
+    }
+  }
+   
