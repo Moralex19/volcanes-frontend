@@ -1,22 +1,23 @@
 {
-  "name": "nuxt-app",
+  "name": "volcanes-y-raices",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=18.17 <21" },
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "preview": "nuxi preview",
+    "start": "node .output/server/index.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.13.1",
+    "@nuxt/kit": "^3.19.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "nodemailer": "^7.0.6",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.19.0",
+    "sweetalert2": "^11.12.4",
     "swiper": "^11.1.14",
-    "vue": "latest",
     "vue-flux": "^7.0.0-beta.6"
   }
 }

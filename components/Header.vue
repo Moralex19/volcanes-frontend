@@ -2,7 +2,6 @@
   <header class="site-header" :class="{ scrolled: isScrolled }">
     <!-- Barra roja superior -->
     <div class="topbar container-fluid">
-      <!-- Hamburguesa: móvil siempre; en desktop solo con scroll -->
       <button
         class="toggler"
         type="button"
@@ -71,7 +70,6 @@ const onNavClick = () => closeMenu()
 const onEscape = (e) => { if (e.key === 'Escape') closeMenu() }
 
 onMounted(async () => {
-  // ✅ Importa Bootstrap ESM SOLO en cliente (evita SSR errors)
   const bs = await import('bootstrap/dist/js/bootstrap.esm.js')
   const { Collapse } = bs
   if (collapseEl.value) {

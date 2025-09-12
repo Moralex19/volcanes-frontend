@@ -1,0 +1,26 @@
+{
+  "header": {
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "scrolledBackgroundColor": "#F57313",
+    "navLinkColor": "#ff5c35",
+    "navLinkBackgroundColor": "#ffffff",
+    "navLinkHoverBackgroundColor": "#00796b",
+    "buttonRegisterBackgroundColor": "#F57313",
+    "buttonRegisterHoverBackgroundColor": "#00796b"
+  },
+  "footer": {
+    "backgroundColor": "#192733",
+    "textColor": "#ffffff"
+  },
+  "zoneContact": {
+    "contact-container-backgroundColor-gradient1": "#f39654",
+    "contact-container-backgroundColor-gradient2": "#F57313",
+    "contact-info-backgroundColor": "rgba(25, 39, 51, 0.7)",
+    "textPrincipal": "rgba(0, 150, 136, 0.9)",
+    "textPrincipal-borde": "rgb(228, 228, 228)",
+    "texto-p": "#fafafa",
+    "gradient1": "rgba(245, 184, 87, 0.5)",
+    "gradient2": "rgba(246, 207, 10, 0.5)" ,
+    "button": "linear-gradient(to right, #6895c6,#007bff)"  
+  }
+}

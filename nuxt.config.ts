@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 
   css: [
     'bootstrap/dist/css/bootstrap.min.css',
+    // '@/assets/styles/base.css', // si la usas
   ],
 
   app: {
@@ -13,24 +14,15 @@ export default defineNuxtConfig({
       link: [
         {
           rel: 'stylesheet',
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
         },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/logo.png', 
-        },
-      ],
-      script: [
-        {
-          src: 'https://cdn.jsdelivr.net/npm/sweetalert2@11',
-          type: 'text/javascript',
-          defer: true,
-        },
-      ],
-    },
+        { rel: 'icon', type: 'image/png', href: '/logo.png' }
+      ]
+      // scripts externos JS como SweetAlert2/Bootstrap JS van por plugin, no por <script src>
+    }
   },
 
+  nitro: { preset: 'vercel' },
   build: { transpile: [] },
 
   runtimeConfig: {
@@ -39,6 +31,6 @@ export default defineNuxtConfig({
     smtpUser: process.env.SMTP_USER,
     smtpPass: process.env.SMTP_PASS,
     contactTo: process.env.CONTACT_TO,
-    public: {},
-  },
+    public: {}
+  }
 })
