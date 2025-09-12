@@ -1,6 +1,4 @@
 // server/api/contact.post.ts
-import nodemailer from 'nodemailer'
-
 export default defineEventHandler(async (event) => {
   const body = await readBody<{
     nombre: string
@@ -13,18 +11,23 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Faltan campos obligatorios' })
   }
 
-  const config = useRuntimeConfig()
+  const { smtpHost, smtpPort, smtpUser, smtpPass, contactTo } = useRuntimeConfig()
 
-  // ---- Transporter (elige 465 o 587) ----
+  // Evita 500 si faltan ENV en Vercel
+  if (!smtpHost || !smtpPort || !smtpUser || !smtpPass || !contactTo) {
+    console.warn('SMTP env missing; skipping send.')
+    return { ok: true, skipped: true }
+  }
+
+  // Importa dentro del handler (mejor para serverless)
+  const nodemailer = await import('nodemailer')
+
   const transporter = nodemailer.createTransport({
-    host: config.smtpHost || 'smtp.gmail.com',
-    port: Number(config.smtpPort || 465),
-    secure: String(config.smtpPort || '465') === '465', // true si 465, false si 587
-    auth: {
-      user: config.smtpUser,
-      pass: config.smtpPass,
-    },
-    tls: { minVersion: 'TLSv1.2' },
+    host: smtpHost,
+    port: Number(smtpPort),
+    secure: Number(smtpPort) === 465,
+    auth: { user: smtpUser, pass: smtpPass },
+    tls: { minVersion: 'TLSv1.2' }
   })
 
   const html = `
@@ -32,16 +35,15 @@ export default defineEventHandler(async (event) => {
     <p><strong>Nombre:</strong> ${body.nombre}</p>
     <p><strong>Email:</strong> ${body.email}</p>
     <p><strong>Teléfono:</strong> ${body.telefono || '-'}</p>
-    <p><strong>Mensaje:</strong></p>
-    <p>${(body.mensaje || '').replace(/\n/g, '<br>')}</p>
+    <p><strong>Mensaje:</strong><br>${(body.mensaje || '').replace(/\n/g, '<br>')}</p>
   `
 
   await transporter.sendMail({
-    from: `"Formulario Web" <${config.smtpUser}>`, 
-    to: config.contactTo,
+    from: `"Formulario Web" <${smtpUser}>`,
+    to: contactTo,
     replyTo: body.email,
     subject: `Contacto: ${body.nombre}`,
-    html,
+    html
   })
 
   return { ok: true }
