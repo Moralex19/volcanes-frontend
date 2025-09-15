@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   }
 
   // Importa dentro del handler (mejor para serverless)
-  const nodemailer = await import('nodemailer')
+  const { default: nodemailer } = await import('nodemailer')
 
   const transporter = nodemailer.createTransport({
     host: smtpHost,

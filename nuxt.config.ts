@@ -18,11 +18,11 @@ export default defineNuxtConfig({
         },
         { rel: 'icon', type: 'image/png', href: '/logo.png' }
       ]
-      // scripts externos JS como SweetAlert2/Bootstrap JS van por plugin, no por <script src>
+      // No metas JS por CDN aquí; usa plugins *.client.ts
     }
   },
 
-  nitro: { preset: 'vercel' },
+  nitro: { preset: 'vercel' },   // Para deploy perfecto en Vercel
   build: { transpile: [] },
 
   runtimeConfig: {

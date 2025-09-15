@@ -21,11 +21,11 @@
     <div class="nav-row d-none d-lg-block" :class="{ hidden: isScrolled }">
       <nav class="categories container">
         <ul class="cat-list">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#quienes-somos">Nosotros</a></li>
-          <li><a href="#catalogo">Catálogo</a></li>
-          <li><a href="#servicios">Secciones</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><NuxtLink :to="{ path: '/' }">Inicio</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#quienes-somos' }">Nosotros</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#catalogo' }">Catálogo</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#servicios' }">Secciones</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#contacto' }">Contacto</NuxtLink></li>
         </ul>
       </nav>
     </div>
@@ -34,11 +34,11 @@
     <div class="collapse" id="navMobile" ref="collapseEl">
       <nav class="mobile-menu container">
         <ul class="cat-list">
-          <li><a href="#inicio" @click="onNavClick">Inicio</a></li>
-          <li><a href="#quienes-somos" @click="onNavClick">Nosotros</a></li>
-          <li><a href="#catalogo" @click="onNavClick">Catálogo</a></li>
-          <li><a href="#servicios" @click="onNavClick">Secciones</a></li>
-          <li><a href="#contacto" @click="onNavClick">Contacto</a></li>
+          <li><NuxtLink :to="{ path: '/' }" @click="onNavClick">Inicio</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#quienes-somos' }" @click="onNavClick">Nosotros</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#catalogo' }" @click="onNavClick">Catálogo</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#servicios' }" @click="onNavClick">Secciones</NuxtLink></li>
+          <li><NuxtLink :to="{ path: '/', hash: '#contacto' }" @click="onNavClick">Contacto</NuxtLink></li>
         </ul>
       </nav>
     </div>
@@ -46,7 +46,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
+import { useRouter } from '#app'
 import company from '@/public/data/header.json'
 
 const props = defineProps({ isScrolled: { type: Boolean, default: false } })
@@ -68,6 +69,10 @@ const closeMenu = () => {
 }
 const onNavClick = () => closeMenu()
 const onEscape = (e) => { if (e.key === 'Escape') closeMenu() }
+
+const router = useRouter()
+// Cierra el menú cuando cambia la ruta (útil en móvil)
+watch(() => router.currentRoute.value.fullPath, () => closeMenu())
 
 onMounted(async () => {
   const bs = await import('bootstrap/dist/js/bootstrap.esm.js')
@@ -110,17 +115,22 @@ onBeforeUnmount(() => {
 .mobile-menu .cat-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .mobile-menu .cat-list a { color: #fff; text-decoration: none; padding: 10px 4px; border-bottom: 1px solid rgba(255,255,255,.08); }
 
-/* Responsive: en desktop la hamburguesa solo aparece con scroll */
+/* Responsive */
 @media (min-width: 992px) {
   .toggler { display: none; }
-  .site-header.scrolled .toggler { display: inline-flex; } /* aparece al scrollear */
+  .site-header.scrolled .toggler { display: inline-flex; }
 }
-
-/* En móviles: siempre hamburguesa; la fila desktop no se muestra */
 @media (max-width: 991.98px) {
   .nav-row { display: none !important; }
 }
-
-/* Ajuste opcional al hacer scroll */
 .site-header.scrolled .topbar { height: 64px; }
+</style>
+
+<!-- Ajustes globales recomendados -->
+<style>
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 88px; }
+@media (min-width: 992px) {
+  [id] { scroll-margin-top: 120px; }
+}
 </style>
