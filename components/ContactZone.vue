@@ -1,8 +1,8 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { alertaExito, showAlertEmail } from '@/utils/alertas'
-import colors from '@/public/data/colors.json';
-import contacto from '@/public/data/contacto.json'
+import colors from '~/assets/data/colors.json';
+import contacto from '~/assets/data/contacto.json'
 
 
 const form = ref({
