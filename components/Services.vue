@@ -5,7 +5,6 @@ import { ref, onMounted } from 'vue'
 const services = ref([])
 const pageTitle = ref('')
 
-// nuevo nombre para evitar el viejo en caché
 const DATA_URL = '/data/services.v2.json'
 
 onMounted(async () => {

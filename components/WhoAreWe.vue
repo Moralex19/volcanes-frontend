@@ -2,7 +2,6 @@
   <div class="whoarewe-container">
     <div class="image-content-wrapper">
       <div class="image-section">
-        <!-- Aquí se coloca la ruta directa a la imagen -->
         <img src="/logo.png" alt="Logo" />
       </div>
       <div class="content-section">
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import data from '~/asssets/data/WhoAreWe.json'; 
+import data from '~/assets/data/WhoAreWe.json'; 
 
 export default {
   name: 'WhoAreWe',

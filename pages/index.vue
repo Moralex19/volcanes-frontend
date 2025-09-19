@@ -12,6 +12,7 @@ const Services      = defineAsyncComponent(() => import('~/components/Services.v
 
 // Estos no dependen de APIs del navegador
 import WhoAreWe   from '~/components/WhoAreWe.vue'
+// Bien:
 import ContactZone from '~/components/ContactZone.vue'
 </script>
 

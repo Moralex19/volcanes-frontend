@@ -33,14 +33,35 @@ const verDesc = () => { ver.value = !ver.value }
 </template>
 
 <style scoped>
+.card {
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  font-family: inherit; /* 👉 hereda Arial desde global.css */
+}
+
 .card-img-top {
   border-radius: 50px;
   padding: 20px;
   object-fit: cover;
   height: 350px;
 }
-.card { border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
-.card-body { padding: 25px; margin-top: -15px; }
-.btn-primary { border-radius: 50px; width: 120px; border: none; }
-.btn-primary:hover { background-color: #0056b3; }
+
+.card-body {
+  padding: 25px;
+  margin-top: -15px;
+}
+
+/* Botón azul sólido con letras blancas */
+.btn-primary {
+  background-color: #0000FF; /* azul */
+  color: #FFFFFF;            /* blanco */
+  border-radius: 50px;
+  width: 120px;
+  border: none;
+  padding: 8px 16px;
+}
+
+.btn-primary:hover {
+  background-color: #0044cc; /* azul más oscuro */
+}
 </style>

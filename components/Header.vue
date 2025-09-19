@@ -48,7 +48,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import { useRouter } from '#app'
-import company from '@/public/data/header.json'
+import company from '~/assets/data/header.json'
 
 const props = defineProps({ isScrolled: { type: Boolean, default: false } })
 const titleText = computed(() => company?.logo?.content?.text || 'EXPANSIÓN')
@@ -89,9 +89,11 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* ===== Estructura base ===== */
-.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 0 rgba(0,0,0,.05); }
-.topbar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; height: 72px; background: #e41e26; color: #fff; padding: 0 16px; }
+
+.site-header { 
+  position: fixed; 
+  top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 0 rgba(0,0,0,.05); }
+.topbar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; height: 72px; background: #727d94; color: #fff; padding: 0 16px; }
 .brand { text-align: center; color: #fff; font-weight: 800; letter-spacing: 2px; font-size: clamp(20px, 3.4vw, 40px); }
 .spacer { width: 32px; }
 

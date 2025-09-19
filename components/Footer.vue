@@ -20,7 +20,7 @@
         <a href="https://www.facebook.com/profile.php?id=100072182591117" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <i class="fa-brands fa-facebook social-icon" :style="{ color: colors.footer.socialIconColor.facebook }"></i>
         </a>
-        <a href="https://instagram.com/tuperfil" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <a href="https://www.instagram.com/revista_volcanesyraices/?igsh=MXI5bHRuOTh5NzQwZA%3D%3D#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <i class="fa-brands fa-instagram social-icon" :style="{ color: colors.footer.socialIconColor.instagram }"></i>
         </a>
         <a href="https://wa.me/9624002136" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import colors from '@/public/data/colorsFooter.json';
+import colors from '~/assets/data/colorsFooter.json';
 import ModalTerms from '~/components/ModalTerms.vue';
 import ModalPrivacy from '~/components/ModalPrivacy.vue';
 
@@ -138,6 +138,11 @@ export default {
   text-decoration: none;
   padding: 0 4px;
   transition: color 0.3s, text-decoration 0.3s;
+  color: #000000; /* negro */
+}
+
+.footer-links a:hover {
+  color: #333333; 
 }
 
 .footer p {
@@ -169,5 +174,10 @@ export default {
   .social-icon {
     font-size: 1.3em;
   }
+
+  .footer {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 }
 </style>

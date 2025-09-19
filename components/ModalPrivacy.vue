@@ -8,7 +8,7 @@
           </div>
           <div class="modal-body">
             <h5>AVISO DE PRIVACIDAD</h5>
-            <h6>Última actualización: [Fecha]</h6>
+            <h6>Última actualización: 2025</h6>
             
             <h6>1. Información Recopilada</h6>
             <p>

@@ -1,6 +1,5 @@
-@import './base.css'; /* Extiende desde base.css */
+@import './base.css'; 
 
-/* Contenedor principal */
 .whoarewe-container {
   display: flex;
   flex-direction: column;
@@ -44,7 +43,7 @@
 
 /* Centramos el título */
 .section-title {
-  font-family: var(--font-secondary); 
+  font-family: inherit;
   font-size: 2.2rem;
   font-weight: 800;
   margin-top: 0;
@@ -54,7 +53,7 @@
 
 /* Descripción centrada debajo del título */
 .section-description {
-  font-family: var(--font-secondary); 
+  font-family: inherit; 
   font-size: 1.2rem;
   line-height: 1.5;
   color: var(--text-color);
@@ -90,7 +89,7 @@
 
 /* Estilo para los títulos de características */
 .feature-text h2 {
-  font-family: var(--font-secondary); 
+  font-family: inherit; 
   font-size: 1.5rem;
   margin: 0;
   color: var(--text-heading-color); 
@@ -98,13 +97,12 @@
 
 /* Estilo para las descripciones de características */
 .feature-text p {
-  font-family: var(--font-secondary); 
+  font-family: inherit; 
   font-size: 1rem;
   margin-top: 5px;
   color: #555;
 }
 
-/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
   .image-content-wrapper {
     flex-direction: column;

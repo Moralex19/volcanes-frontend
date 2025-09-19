@@ -5,27 +5,25 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Personaliza el fondo y el borde de la alerta */
 .popup-class {
-  background: #f5f5f5; /* Cambia el color de fondo */
-  border-radius: 1rem; /* Cambia el borde */
+  background: #f5f5f5; 
+  border-radius: 1rem;
 }
 
-/* Personaliza el título */
 .confirm-button{
   border-radius: 5px;
   background: linear-gradient(to right, #6895c6,#007bff);
   
 }
-/* Si necesitas hacer algún ajuste a nivel global */
-body {
-  padding-top: 80px; /* Para evitar que el header fijo tape el contenido */
-}
+
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Si necesitas hacer algún ajuste a nivel global */
+
 body {
-  padding-top: 80px; /* Para evitar que el header fijo tape el contenido */
+  padding-top: 80px;
+  font-family: Arial, Helvetica, sans-serif; 
 }
+
