@@ -1,36 +1,30 @@
-// nuxt.config.ts
+// nuxt.config.ts (Frontend - Netlify SSG)
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
+  ssr: false,
+  nitro: { preset: 'static' }, // genera .output/public
+
   css: [
     'bootstrap/dist/css/bootstrap.min.css',
-    // '@/assets/styles/base.css', // si la usas
+    // '@/assets/styles/global.css', // si la usas
   ],
 
   app: {
     head: {
       title: 'Volcanes y Raíces',
       link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
-        },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' },
         { rel: 'icon', type: 'image/png', href: '/logo.png' }
       ]
-      // No metas JS por CDN aquí; usa plugins *.client.ts
     }
   },
 
-  nitro: { preset: 'vercel' },   // Para deploy perfecto en Vercel
-  build: { transpile: [] },
-
   runtimeConfig: {
-    smtpHost: process.env.SMTP_HOST,
-    smtpPort: process.env.SMTP_PORT,
-    smtpUser: process.env.SMTP_USER,
-    smtpPass: process.env.SMTP_PASS,
-    contactTo: process.env.CONTACT_TO,
-    public: {}
+    public: {
+      // Se define en Netlify → Environment Variables
+      apiBase: process.env.PUBLIC_API_BASE || 'https://TU-API.up.railway.app'
+    }
   }
 })

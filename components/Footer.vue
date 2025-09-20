@@ -176,7 +176,7 @@ export default {
   }
 
   .footer {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: inherit;
 }
 
 }

@@ -70,9 +70,8 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 
-/* Estilos generales */
 body {
-  font-family: 'Playpen Sans', sans-serif; /* Aplicamos la nueva fuente aquí */
+  font-family: inherit;
 }
 
 #app {
@@ -94,8 +93,8 @@ body {
 }
 
 .swiper {
-  width: 100%;  /* Ocupa todo el ancho del contenedor */
-  height: 100%; /* Ocupa todo el alto del contenedor */
+  width: 100%;  
+  height: 100%; 
 }
 
 .swiper-slide {
@@ -112,37 +111,37 @@ body {
 }
 
 .slide-image {
-  width: 100%;     /* Ocupa todo el ancho del contenedor */
-  height: 100%;    /* Ocupa todo el alto del contenedor */
-  object-fit: cover; /* Escala y recorta la imagen si es necesario, para llenar el contenedor */
+  width: 100%;   
+  height: 100%;  
+  object-fit: cover; 
   z-index: 1;
 }
 
 .slide-caption {
   position: absolute;
-  top: 50%;               /* Mueve el texto al centro verticalmente */
-  left: 50%;              /* Centra el texto horizontalmente */
-  transform: translate(-50%, -50%); /* Ajusta la posición para centrarlo completamente */
+  top: 50%;               
+  left: 50%;             
+  transform: translate(-50%, -50%); 
   text-align: center;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px;
   z-index: 2;
-  width: 80%;             /* Ajusta el ancho si es necesario */
-  max-width: 800px;       /* Limita el ancho para pantallas grandes */
+  width: 80%;           
+  max-width: 800px;       
 }
 
 .slide-title {
-  font-family: 'Playpen Sans', sans-serif; /* Aplicar la fuente específica al título */
-  font-size: 2rem; /* Tamaño del título */
-  font-weight: 800; /* Peso de la fuente */
-  margin: 0; /* Eliminar márgenes para mantener consistencia */
+  font-family: inherit; 
+  font-size: 2rem; 
+  font-weight: 800; 
+  margin: 0; 
 }
 
 .slide-description {
-  font-family: 'Playpen Sans', sans-serif; /* Aplicar la fuente específica a la descripción */
-  font-size: 1rem; /* Tamaño de la descripción */
-  margin: 0; /* Eliminar márgenes para mantener consistencia */
-  color: #ffffff; /* Color de la descripción */
+  font-family: inherit; 
+  font-size: 1rem; 
+  margin: 0;
+  color: #ffffff; 
 }
 </style>*/
