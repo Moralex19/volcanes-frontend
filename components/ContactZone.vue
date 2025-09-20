@@ -1,11 +1,12 @@
-<script setup>
+<!-- components/ContactZone.vue -->
+<script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { alertaExito, showAlertEmail } from '@/utils/alertas'
 import colors from '~/assets/data/colors.json'
 import contacto from '~/assets/data/contacto.json'
 
-// ⬇️ para leer la URL de tu API en Railway (PUBLIC_API_BASE)
-const config = useRuntimeConfig()
+// Lee la base de la API desde runtimeConfig (PUBLIC_API_BASE en Netlify)
+const { public: { apiBase } } = useRuntimeConfig()
 
 const form = ref({
   nombre: '',
@@ -37,8 +38,7 @@ const submitForm = async () => {
 
   loading.value = true
   try {
-    // ⬇️ Usa tu API externa: PUBLIC_API_BASE=https://tu-api.up.railway.app
-    const res = await $fetch(`${config.public.apiBase}/api/contact`, {
+    const res = await $fetch<{ ok: boolean }>(`${apiBase}/api/contact`, {
       method: 'POST',
       body: {
         nombre: form.value.nombre,
@@ -153,35 +153,31 @@ onMounted(() => {
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
 
 .container{
-  font-family: inherit; /* hereda Arial/lo que definas en global.css */
+  font-family: inherit;
   min-height: 100vh;
 }
 
-/* Colores de fondo y texto desde variables */
+/* Fondos y texto */
 .contact-info {
   background: linear-gradient(to right, var(--gradient1), var(--gradient2));
   color: var(--text-principal-color);
 }
-.contact-info h2 {
-  color: var(--contact-container-gradient1); /* si quieres negro, pon #000 en tu JSON */
-}
+.contact-info h2 { color: var(--contact-container-gradient1); }
 
 .contact-form {
   background: linear-gradient(to right, var(--gradient1), var(--gradient2));
   color: var(--text-principal-color);
 }
 
-/* === Botón: azul sólido + letras blancas (sin gradientes) === */
+/* Botón: azul sólido + letras blancas */
 .btn-primary{
-  background-color: #0000FF; /* azul */
-  color: #FFFFFF;            /* blanco */
+  background-color: #0000FF;
+  color: #FFFFFF;
   border: none;
   border-radius: 10px;
   padding: 10px 25px;
 }
-.btn-primary:hover {
-  background-color: #0044cc; /* azul más oscuro */
-}
+.btn-primary:hover { background-color: #0044cc; }
 
 .btn-icon { margin-left: 8px; }
 .spinner-border { color: var(--text-p); }
