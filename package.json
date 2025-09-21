@@ -1,14 +1,15 @@
 {
   "name": "volcanes-frontend",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "preview": "npx serve .output/public -l 4173",
-    "start": "nuxt start"
+    "start": "nuxt start",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.12.0",
+    "nuxt": "^3.12.4",
     "bootstrap": "^5.3.3"
   }
 }
