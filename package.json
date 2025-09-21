@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "postinstall": "nuxt prepare"
+    "generate": "npx nuxi generate",
+    "preview": "npx serve .output/public -l 4173"
   },
   "dependencies": {
     "nuxt": "^3.12.0",
