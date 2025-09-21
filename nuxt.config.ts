@@ -1,16 +1,9 @@
-// frontend/nuxt.config.ts
+// Frontend - Vercel (SSR desactivado, pero usando preset de Vercel)
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
-
-  // SPA + estático
   ssr: false,
-  nitro: { preset: 'static' }, // generará .output/public
-
-  css: [
-    'bootstrap/dist/css/bootstrap.min.css',
-  ],
-
+  nitro: { preset: 'vercel' }, // <- deja que Vercel maneje la salida
+  css: ['bootstrap/dist/css/bootstrap.min.css'],
   app: {
     head: {
       title: 'Volcanes y Raíces',
@@ -20,10 +13,8 @@ export default defineNuxtConfig({
       ]
     }
   },
-
   runtimeConfig: {
     public: {
-      // Se sobreescribe en Vercel → Environment Variables
       apiBase: process.env.PUBLIC_API_BASE || 'https://volcanes-backend-production.up.railway.app'
     }
   }
