@@ -3,13 +3,13 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "nuxt build",
-    "generate": "npx nuxi generate",
-    "preview": "npx serve .output/public -l 4173"
+    "build": "npx nuxi generate",
+    "start": "npx serve .output/public -l 4173"
   },
   "dependencies": {
+    "nuxt": "^3.19.0",
     "bootstrap": "^5.3.3",
-    "nuxt": "^3.12.0",
-    "swiper": "^11.2.10"
-  }
+    "swiper": "^11.1.10"
+  },
+  "engines": { "node": ">=18" }
 }
