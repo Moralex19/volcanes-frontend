@@ -1,14 +1,14 @@
-// nuxt.config.ts (Frontend - Netlify SSG)
+// frontend/nuxt.config.ts
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
+  // SPA + estático
   ssr: false,
-  nitro: { preset: 'static' }, // genera .output/public
+  nitro: { preset: 'static' }, // generará .output/public
 
   css: [
     'bootstrap/dist/css/bootstrap.min.css',
-    // '@/assets/styles/global.css', // si la usas
   ],
 
   app: {
@@ -23,8 +23,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      // Se define en Netlify → Environment Variables
-      apiBase: process.env.PUBLIC_API_BASE || 'https://TU-API.up.railway.app'
+      // Se sobreescribe en Vercel → Environment Variables
+      apiBase: process.env.PUBLIC_API_BASE || 'https://volcanes-backend-production.up.railway.app'
     }
   }
 })

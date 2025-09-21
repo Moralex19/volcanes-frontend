@@ -3,7 +3,6 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "npx nuxi generate",
     "build": "nuxi generate",
     "preview": "npx serve .output/public -l 4173"
   },
