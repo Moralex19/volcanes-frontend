@@ -1,6 +1,5 @@
 {
   "name": "volcanes-frontend",
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
@@ -9,7 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.12.4",
+    "nuxt": "^3.12.0",
     "bootstrap": "^5.3.3"
   }
 }

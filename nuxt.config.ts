@@ -1,8 +1,8 @@
-// Frontend - Vercel (SSR desactivado, pero usando preset de Vercel)
+// Frontend/nuxt.config.ts
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  ssr: false,
-  nitro: { preset: 'vercel' }, // <- deja que Vercel maneje la salida
+  ssr: false,                    // 👈 SPA
+  nitro: { preset: 'vercel' },   // despliegue en Vercel
   css: ['bootstrap/dist/css/bootstrap.min.css'],
   app: {
     head: {
@@ -18,4 +18,4 @@ export default defineNuxtConfig({
       apiBase: process.env.PUBLIC_API_BASE || 'https://volcanes-backend-production.up.railway.app'
     }
   }
-})
+});
