@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   ssr: true,                 // <- SSG
-  nitro: { preset: 'vercel' },// <- genera .output/public
+  nitro: { preset: 'static' },// <- genera .output/public
 
   css: ['bootstrap/dist/css/bootstrap.min.css'],
 
