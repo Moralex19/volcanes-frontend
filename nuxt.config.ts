@@ -20,7 +20,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.PUBLIC_API_BASE || 'https://volcanes-backend-production.up.railway.app'
+      apiBase: process.env.PUBLIC_API_BASE || 'https://volcanes-backend-production.up.railway.app',
+      disableContact: process.env.PUBLIC_DISABLE_CONTACT === '1' // ⬅️ nuevo
     }
   }
 })

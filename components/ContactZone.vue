@@ -5,17 +5,10 @@ import { alertaExito, showAlertEmail } from '@/utils/alertas'
 import colors from '~/assets/data/colors.json'
 import contacto from '~/assets/data/contacto.json'
 
-/** Base de la API (Vercel env -> runtimeConfig.public.apiBase) */
-const config = useRuntimeConfig()
-/** Normaliza para evitar // entre base y path */
-const apiBase = (config.public?.apiBase || '').replace(/\/+$/, '')
+const { public: { apiBase: _apiBase, simulateContact, simulateDelayMs } } = useRuntimeConfig()
+const apiBase = (_apiBase || '').replace(/\/+$/, '')
 
-const form = ref({
-  nombre: '',
-  email: '',
-  telefono: '',
-  mensaje: ''
-})
+const form = ref({ nombre: '', email: '', telefono: '', mensaje: '' })
 const loading = ref(false)
 const emailInput = ref<HTMLInputElement | null>(null)
 const generalError = ref<string | null>(null)
@@ -25,19 +18,15 @@ const limpiarDatos = () => {
   generalError.value = null
 }
 
-const isEmailValid = computed(() => {
-  const emailRegex =
-    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-  return emailRegex.test(form.value.email)
-})
-
+const isEmailValid = computed(() =>
+  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(form.value.email)
+)
 const isFormValid = computed(() =>
-  isEmailValid.value &&
-  !!form.value.nombre.trim() &&
-  !!form.value.mensaje.trim()
+  isEmailValid.value && !!form.value.nombre.trim() && !!form.value.mensaje.trim()
 )
 
 const focusEmailInput = () => emailInput.value?.focus()
+const sleep = (ms:number) => new Promise(r => setTimeout(r, ms))
 
 const submitForm = async () => {
   generalError.value = null
@@ -47,41 +36,48 @@ const submitForm = async () => {
     focusEmailInput()
     return
   }
+
+  // === MODO SIMULACIÓN ===
+  if (simulateContact) {
+    loading.value = true
+    try {
+      console.group('[Contact simulate]')
+      console.table(form.value)
+      await sleep(simulateDelayMs || 600)
+      console.groupEnd()
+      limpiarDatos()
+      alertaExito() // feedback visual de éxito
+    } catch (e:any) {
+      console.error('[contact simulate] error:', e)
+      generalError.value = 'No se pudo simular el envío.'
+    } finally {
+      loading.value = false
+    }
+    return
+  }
+
+  // === MODO REAL (llama al backend) ===
   if (!apiBase) {
-    generalError.value =
-      'No se configuró la URL de la API. Define PUBLIC_API_BASE en Vercel.'
+    generalError.value = 'No se configuró la URL de la API. Define PUBLIC_API_BASE en Vercel.'
     return
   }
 
   loading.value = true
   try {
-    // Llamada al backend (Railway)
-    const res = await $fetch<{ ok: boolean; error?: string }>(
-      `${apiBase}/api/contact`,
-      {
-        method: 'POST',
-        body: {
-          nombre: form.value.nombre,
-          email: form.value.email,
-          telefono: form.value.telefono,
-          mensaje: form.value.mensaje
-        },
-        // tiempo de espera para evitar cuelgues
-        timeout: 15000
-      }
-    )
-
+    const res = await $fetch<{ ok: boolean; error?: string }>(`${apiBase}/api/contact`, {
+      method: 'POST',
+      body: { ...form.value },
+      timeout: 15000
+    })
     if (res?.ok) {
       limpiarDatos()
       alertaExito()
     } else {
       throw new Error(res?.error || 'Respuesta no válida del servidor')
     }
-  } catch (e: any) {
+  } catch (e:any) {
     console.error('[contact] error:', e)
-    generalError.value =
-      e?.message ||
-      'No se pudo enviar el mensaje. Intenta de nuevo más tarde.'
+    generalError.value = e?.message || 'No se pudo enviar el mensaje. Intenta de nuevo más tarde.'
     alert('No se pudo enviar el mensaje. Intenta de nuevo.')
   } finally {
     loading.value = false
@@ -89,42 +85,21 @@ const submitForm = async () => {
 }
 
 onMounted(() => {
-  // Animación de aparición al hacer scroll
   const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry =>
-        entry.target.classList.toggle('is-visible', entry.isIntersecting)
-      )
-    },
+    entries => entries.forEach(entry =>
+      entry.target.classList.toggle('is-visible', entry.isIntersecting)
+    ),
     { threshold: 0.1 }
   )
-  document
-    .querySelectorAll('.animate-on-scroll')
-    .forEach(el => observer.observe(el))
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el))
 
-  // Variables CSS desde JSON
   const root = document.documentElement
-  root.style.setProperty(
-    '--contact-container-gradient1',
-    colors.zoneContact['contact-container-backgroundColor-gradient1']
-  )
-  root.style.setProperty(
-    '--contact-container-gradient2',
-    colors.zoneContact['contact-container-backgroundColor-gradient2']
-  )
-  root.style.setProperty(
-    '--text-principal-color',
-    colors.zoneContact['textPrincipal']
-  )
+  root.style.setProperty('--contact-container-gradient1', colors.zoneContact['contact-container-backgroundColor-gradient1'])
+  root.style.setProperty('--contact-container-gradient2', colors.zoneContact['contact-container-backgroundColor-gradient2'])
+  root.style.setProperty('--text-principal-color', colors.zoneContact['textPrincipal'])
   root.style.setProperty('--text-p', colors.zoneContact['texto-p'])
   root.style.setProperty('--gradient1', colors.zoneContact['gradient1'])
   root.style.setProperty('--gradient2', colors.zoneContact['gradient2'])
-
-  if (!apiBase) {
-    console.warn(
-      '[ContactZone] PUBLIC_API_BASE no definido. Configúralo en Vercel.'
-    )
-  }
 })
 </script>
 
