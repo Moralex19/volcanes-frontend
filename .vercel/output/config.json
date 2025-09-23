@@ -1,6 +1,10 @@
 {
   "version": 3,
-  "overrides": {},
+  "overrides": {
+    "index.html": {
+      "path": ""
+    }
+  },
   "routes": [
     {
       "headers": {
@@ -43,14 +47,6 @@
     },
     {
       "handle": "filesystem"
-    },
-    {
-      "src": "/__nuxt_error",
-      "dest": "/__fallback"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/__fallback"
     }
   ]
 }

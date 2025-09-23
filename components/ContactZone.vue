@@ -5,8 +5,10 @@ import { alertaExito, showAlertEmail } from '@/utils/alertas'
 import colors from '~/assets/data/colors.json'
 import contacto from '~/assets/data/contacto.json'
 
-// Lee la base de la API desde runtimeConfig (PUBLIC_API_BASE en Netlify)
-const { public: { apiBase } } = useRuntimeConfig()
+/** Base de la API (Vercel env -> runtimeConfig.public.apiBase) */
+const config = useRuntimeConfig()
+/** Normaliza para evitar // entre base y path */
+const apiBase = (config.public?.apiBase || '').replace(/\/+$/, '')
 
 const form = ref({
   nombre: '',
@@ -14,48 +16,72 @@ const form = ref({
   telefono: '',
   mensaje: ''
 })
+const loading = ref(false)
+const emailInput = ref<HTMLInputElement | null>(null)
+const generalError = ref<string | null>(null)
 
 const limpiarDatos = () => {
   form.value = { nombre: '', email: '', telefono: '', mensaje: '' }
+  generalError.value = null
 }
 
-const loading = ref(false)
-const emailInput = ref<HTMLInputElement | null>(null)
-
 const isEmailValid = computed(() => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  const emailRegex =
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   return emailRegex.test(form.value.email)
 })
 
-const focusEmailInput = () => { emailInput.value?.focus() }
+const isFormValid = computed(() =>
+  isEmailValid.value &&
+  !!form.value.nombre.trim() &&
+  !!form.value.mensaje.trim()
+)
+
+const focusEmailInput = () => emailInput.value?.focus()
 
 const submitForm = async () => {
+  generalError.value = null
+
   if (!isEmailValid.value) {
     showAlertEmail()
     focusEmailInput()
     return
   }
+  if (!apiBase) {
+    generalError.value =
+      'No se configuró la URL de la API. Define PUBLIC_API_BASE en Vercel.'
+    return
+  }
 
   loading.value = true
   try {
-    const res = await $fetch<{ ok: boolean }>(`${apiBase}/api/contact`, {
-      method: 'POST',
-      body: {
-        nombre: form.value.nombre,
-        email: form.value.email,
-        telefono: form.value.telefono,
-        mensaje: form.value.mensaje
+    // Llamada al backend (Railway)
+    const res = await $fetch<{ ok: boolean; error?: string }>(
+      `${apiBase}/api/contact`,
+      {
+        method: 'POST',
+        body: {
+          nombre: form.value.nombre,
+          email: form.value.email,
+          telefono: form.value.telefono,
+          mensaje: form.value.mensaje
+        },
+        // tiempo de espera para evitar cuelgues
+        timeout: 15000
       }
-    })
+    )
 
     if (res?.ok) {
       limpiarDatos()
       alertaExito()
     } else {
-      throw new Error('Respuesta no válida')
+      throw new Error(res?.error || 'Respuesta no válida del servidor')
     }
-  } catch (e) {
-    console.error(e)
+  } catch (e: any) {
+    console.error('[contact] error:', e)
+    generalError.value =
+      e?.message ||
+      'No se pudo enviar el mensaje. Intenta de nuevo más tarde.'
     alert('No se pudo enviar el mensaje. Intenta de nuevo.')
   } finally {
     loading.value = false
@@ -63,25 +89,42 @@ const submitForm = async () => {
 }
 
 onMounted(() => {
-  // Animación aparición
+  // Animación de aparición al hacer scroll
   const observer = new IntersectionObserver(
     entries => {
-      entries.forEach(entry => {
+      entries.forEach(entry =>
         entry.target.classList.toggle('is-visible', entry.isIntersecting)
-      })
+      )
     },
     { threshold: 0.1 }
   )
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el))
+  document
+    .querySelectorAll('.animate-on-scroll')
+    .forEach(el => observer.observe(el))
 
-  // Variables de color desde el JSON
+  // Variables CSS desde JSON
   const root = document.documentElement
-  root.style.setProperty('--contact-container-gradient1', colors.zoneContact['contact-container-backgroundColor-gradient1'])
-  root.style.setProperty('--contact-container-gradient2', colors.zoneContact['contact-container-backgroundColor-gradient2'])
-  root.style.setProperty('--text-principal-color', colors.zoneContact['textPrincipal'])
+  root.style.setProperty(
+    '--contact-container-gradient1',
+    colors.zoneContact['contact-container-backgroundColor-gradient1']
+  )
+  root.style.setProperty(
+    '--contact-container-gradient2',
+    colors.zoneContact['contact-container-backgroundColor-gradient2']
+  )
+  root.style.setProperty(
+    '--text-principal-color',
+    colors.zoneContact['textPrincipal']
+  )
   root.style.setProperty('--text-p', colors.zoneContact['texto-p'])
   root.style.setProperty('--gradient1', colors.zoneContact['gradient1'])
   root.style.setProperty('--gradient2', colors.zoneContact['gradient2'])
+
+  if (!apiBase) {
+    console.warn(
+      '[ContactZone] PUBLIC_API_BASE no definido. Configúralo en Vercel.'
+    )
+  }
 })
 </script>
 
@@ -90,7 +133,9 @@ onMounted(() => {
     <div class="row">
       <!-- Info -->
       <div class="col-md-6 animate-on-scroll">
-        <div class="p-4 rounded shadow-sm contact-info h-100 d-flex flex-column justify-content-center align-items-center">
+        <div
+          class="p-4 rounded shadow-sm contact-info h-100 d-flex flex-column justify-content-center align-items-center"
+        >
           <h2>{{ contacto.tittle }}</h2>
           <h3>{{ contacto.subtitulo }}</h3>
           <p>{{ contacto.p1 }}</p>
@@ -107,7 +152,13 @@ onMounted(() => {
             <label for="nombre" class="form-label">Nombre</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fa-solid fa-user-astronaut"></i></span>
-              <input type="text" id="nombre" v-model="form.nombre" class="form-control" required />
+              <input
+                type="text"
+                id="nombre"
+                v-model.trim="form.nombre"
+                class="form-control"
+                required
+              />
             </div>
           </div>
 
@@ -115,15 +166,31 @@ onMounted(() => {
             <label for="email" class="form-label">Email</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
-              <input type="email" id="email" v-model="form.email" ref="emailInput" class="form-control" required />
+              <input
+                type="email"
+                id="email"
+                v-model.trim="form.email"
+                ref="emailInput"
+                class="form-control"
+                required
+              />
             </div>
+            <small v-if="form.email && !isEmailValid" class="text-warning">
+              Escribe un email válido.
+            </small>
           </div>
 
           <div class="mb-3 animate-on-scroll">
             <label for="telefono" class="form-label">Número de teléfono</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fa-solid fa-square-phone-flip"></i></span>
-              <input type="tel" id="telefono" v-model="form.telefono" class="form-control" required />
+              <input
+                type="tel"
+                id="telefono"
+                v-model.trim="form.telefono"
+                class="form-control"
+                required
+              />
             </div>
           </div>
 
@@ -131,12 +198,28 @@ onMounted(() => {
             <label for="mensaje" class="form-label">Mensaje</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fa-regular fa-comment"></i></span>
-              <textarea id="mensaje" v-model="form.mensaje" class="form-control" required></textarea>
+              <textarea
+                id="mensaje"
+                v-model.trim="form.mensaje"
+                class="form-control"
+                rows="4"
+                required
+              ></textarea>
             </div>
           </div>
 
+          <p v-if="generalError" class="text-danger text-center mb-2">
+            {{ generalError }}
+          </p>
+
           <div class="d-flex justify-content-center align-items-center animate-on-scroll">
-            <button v-if="!loading" type="submit" class="btn btn-primary m-0">
+            <button
+              v-if="!loading"
+              type="submit"
+              class="btn btn-primary m-0"
+              :disabled="!isFormValid"
+              title="Enviar"
+            >
               Enviar <i class="fa-solid fa-paper-plane btn-icon ms-2"></i>
             </button>
             <div v-else class="spinner-border" role="status">
@@ -178,6 +261,7 @@ onMounted(() => {
   padding: 10px 25px;
 }
 .btn-primary:hover { background-color: #0044cc; }
+.btn-primary:disabled { opacity: .65; cursor: not-allowed; }
 
 .btn-icon { margin-left: 8px; }
 .spinner-border { color: var(--text-p); }
