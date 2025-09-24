@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import data from /assets/data/WhoAreWe.json'; 
+import data from '@/assets/data/WhoAreWe.json'; 
 
 export default {
   name: 'WhoAreWe',
@@ -35,4 +35,4 @@ export default {
 </script>
 
 <!-- Importar el CSS externo -->
-<style src="@/assets/styles/WhoAreWe.css"></style>
+<style src="../assets/styles/WhoAreWe.css"></style>
