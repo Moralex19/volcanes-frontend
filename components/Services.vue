@@ -29,4 +29,4 @@ onMounted(async () => {
   </section>
 </template>
 
-<style src="@/assets/styles/services.css"></style>
+<style src="../assets/styles/Services.css"></style>

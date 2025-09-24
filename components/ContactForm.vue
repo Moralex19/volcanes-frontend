@@ -20,6 +20,6 @@
   </template>
   
   <style scoped>
-  /* Ajusta los estilos específicos aquí si es necesario */
+ 
   </style>
   
