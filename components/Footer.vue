@@ -14,7 +14,7 @@
     <div class="footer-section">
       <h4>{{colors.footer.Redes}}</h4>
       <div class="social-links">
-        <a href="mailto:example@example.com" target="_blank" rel="noopener noreferrer" aria-label="Correo Electrónico">
+        <a href="mailto:revista.volcanesyraices@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Correo Electrónico">
           <i class="fa-solid fa-envelope social-icon" :style="{ color: colors.footer.socialIconColor.email }"></i>
         </a>
         <a href="https://www.facebook.com/profile.php?id=100072182591117" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -138,7 +138,7 @@ export default {
   text-decoration: none;
   padding: 0 4px;
   transition: color 0.3s, text-decoration 0.3s;
-  color: #000000; /* negro */
+  color: #000000; 
 }
 
 .footer-links a:hover {

@@ -13,10 +13,10 @@
     "textColor": "#ffffff"
   },
   "zoneContact": {
-     "contact-container-backgroundColor-gradient1": "#000000",
+     "contact-container-backgroundColor-gradient1": "#FFFFFF",
     "contact-container-backgroundColor-gradient2": "#FFFFFF",
     "contact-info-backgroundColor": "#a48406",
-    "textPrincipal": "#000000",
+    "textPrincipal": "#FFFFFF",
     "textPrincipal-borde": "rgb(228, 228, 228)",
     "texto-p": "#fafafa",
     "gradient1": "#2e9da1",

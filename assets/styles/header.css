@@ -1,46 +1,201 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  color: #fff;
-  transition: background-color 0.3s;
+/* Qumpelka N12 desde /public/fonts */
+@font-face{
+  font-family: 'QumpelkaN12';
+  src: url('/fonts/QumpelkaN12.woff2') format('woff2');
+  font-display: swap;
 }
 
-header.transparent {
-  background-color: transparent;
+.site-header { 
+  position: fixed; 
+  top: 0; left: 0; right: 0; 
+  z-index: 1000; 
+  box-shadow: 0 2px 0 rgba(0,0,0,.05); 
 }
 
-header.scrolled {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.navbar {
+/* Topbar: más alto en inicio; más bajo al hacer scroll */
+.topbar{
+  position: relative;   
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.navbar-brand {
-  font-size: 24px;
-  font-weight: bold;
-  margin-right: auto;
-  font-family: var(--font-primary);
-}
-
-.nav-link {
-  background-image: linear-gradient(150deg, var(--gradient-start), var(--gradient-end));
-  border-radius: 8px;
+  justify-content: space-between;
+  height: 96px;
+  background: #2e9da1;
   color: #fff;
-  padding: 4px;
-  text-decoration: none;
+  padding: 0 16px;
 }
 
-.nav-link:hover {
-  background: none;
+
+.brand{
+  position: absolute;        
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+  width: max-content;          /* evita saltos raros */
+}
+
+
+/* “R” con Qumpelka + “evista” en Georgia */
+.brand-top{
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.brand-r{
+  font-family: 'QumpelkaN12', serif;
+  font-size: clamp(26px, 3.8vw, 40px);
+  margin-right: 2px;
+}
+
+.brand-evista{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(20px, 1.4vw, 18px);
+  letter-spacing: .5px;
+}
+
+
+.brand-bottom{
+  font-family: 'Playball', cursive;
+  font-size: clamp(24px, 3.4vw, 36px);
+  margin-top: 4px;
+  line-height: 1.1;
+}
+
+.brand-bottom .brand-r2{
+  font-family: 'QumpelkaN12', serif;
+  font-size: 1.05em; 
+  letter-spacing: 0;
+}
+
+/* Simetría con el botón */
+.spacer { 
+  width: 46px; 
+  height: 38px; 
+}
+
+/* Hamburguesa */
+.toggler{ 
+  border: 0; 
+  background: transparent;
+  width: 46px; 
+  height: 38px;
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.spacer { 
+  width: 46px; 
+  height: 38px; 
+}  
+
+
+.toggler:focus { 
+  outline: none; 
+  box-shadow: none; 
+}
+
+.burger { 
+  display: inline-block; 
+  width: 24px; 
+  height: 18px; 
+  position: relative; 
+}
+
+.burger i { 
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  height: 2px; 
+  background: #fff; 
+  border-radius: 1px; 
+}
+
+.burger i:nth-child(1){ top: 0; } 
+.burger i:nth-child(2){ top: 8px; } 
+.burger i:nth-child(3){ bottom: 0; }
+
+
+.nav-row { 
+  background: #2e52a1; 
+  transition: eight .2s ease, opacity .2s ease; 
+}
+
+.categories { 
+  height: 48px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.categories .cat-list { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
+  gap: clamp(12px, 2.8vw, 48px); 
+  justify-content: center;
+}
+.categories .cat-list a { 
+  color: #fff; 
+  text-decoration: none; 
+  font-size: 18px; 
+  line-height: 48px; 
+  display: inline-block; 
+  padding: 0 2px; 
+  transition: color .2s ease; 
+}
+.categories .cat-list a:hover { 
+  color: #ffd2d4; 
+}
+
+/* Menú colapsable (móvil) */
+.mobile-menu { 
+  background: #2e52a1; 
+  padding: 8px 0 14px; 
+}
+
+.mobile-menu .cat-list { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
+  flex-direction: column; 
+}
+.mobile-menu .cat-list a { 
+  color: #fff; 
+  text-decoration: none; 
+  padding: 10px 4px; 
+  border-bottom: 1px solid rgba(255,255,255,.08); 
+}
+
+/* Efecto al hacer scroll (SOLO queda la hamburguesa) */
+.site-header.scrolled .topbar { 
+  height: 100px; 
+}  
+                 
+.site-header.scrolled .nav-row { 
+  display: none !important; }      /* oculta franja negra */
+@media (min-width: 992px) {
+  .toggler { display: none; }                                     
+  .site-header.scrolled .toggler { display: inline-flex; }        /* muestra hamburguesa en desktop al scrollear */
+}
+@media (max-width: 991.98px) {
+  .nav-row { display: none !important; }                          /* en móvil no se muestra la franja negra */
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+/* Ajusta el offset de anclas cuando la barra es más alta */
+[id] { 
+  scroll-margin-top: 140px; 
+}      /* cerca de la altura scrolled */
+@media (min-width: 992px) {
+  [id] { scroll-margin-top: 140px; }    /* mismo valor en desktop */
 }

@@ -2,7 +2,7 @@
   <div class="whoarewe-container">
     <div class="image-content-wrapper">
       <div class="image-section">
-        <img src="/logo.png" alt="Logo" />
+        <img src="/logo2.png" alt="Logo" />
       </div>
       <div class="content-section">
         <h1 class="section-title">Nosotros!!</h1>
@@ -34,5 +34,4 @@ export default {
 };
 </script>
 
-<!-- Importar el CSS externo -->
 <style src="../assets/styles/WhoAreWe.css"></style>

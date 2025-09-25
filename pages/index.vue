@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { useHead } from '#imports'
 import { defineAsyncComponent } from 'vue'
-
+import IssuuIframe from '~/components/IssuuEmbedScript.vue'
 // SEO
 useHead({ title: 'Volcanes y Raices' })
 
@@ -12,7 +12,6 @@ const Services      = defineAsyncComponent(() => import('~/components/Services.v
 
 // Estos no dependen de APIs del navegador
 import WhoAreWe   from '~/components/WhoAreWe.vue'
-// Bien:
 import ContactZone from '~/components/ContactZone.vue'
 </script>
 
@@ -37,15 +36,15 @@ import ContactZone from '~/components/ContactZone.vue'
     <!-- Catálogo (embed) -->
     <section id="catalogo" class="py-5 bg-white section-anchor">
       <div class="container">
-        <h2 class="mb-4 text-center">El Principito</h2>
+        <h2 class="mb-4 text-center">Revista Volcanes</h2>
         <div class="ratio ratio-16x9">
           <iframe
-            src="https://e.issuu.com/embed.html?d=el_principito_edincr&u=volcanesyraices"
-            style="border:0;"
-            allowfullscreen
-            loading="lazy"
-            title="El Principito"
-          ></iframe>
+          src="https://e.issuu.com/embed.html?d=pinocho&u=revista.volcanesyraices"
+          style="border:0;width:100%;height:500px"
+          allowfullscreen
+          loading="lazy"
+          title="Pinocho">
+        </iframe>
         </div>
       </div>
     </section>
@@ -65,7 +64,19 @@ import ContactZone from '~/components/ContactZone.vue'
 </template>
 
 <style scoped>
-.section-anchor { scroll-margin-top: calc(var(--header-h) + 10px); }
-.overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#fff;z-index:3;}
-video{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:1;}
+
+.section-anchor { 
+  scroll-margin-top: calc(var(--header-h) + 10px); 
+}
+.overlay {
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);text-align:center;color:#fff;z-index:3;
+}
+video {
+  width:100%;height:100%;
+  object-fit:cover;
+  position:absolute;
+  top:0;left:0;z-index:1;
+}
 </style>
