@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import { alertaExito, showAlertEmail } from "@/utils/alertas";
 import contacto from "~/assets/data/contacto.json";
-import "../assets/styles/ContactZone.css";
+import "@/assets/styles/ContactZone.css";
 
 const {
   public: { apiBase: _apiBase, simulateContact, simulateDelayMs },
