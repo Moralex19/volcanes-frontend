@@ -16,7 +16,7 @@
             </p>
             <ul>
               <li>Información personal proporcionada por el usuario.</li>
-              <li>Datos de uso del sitio/aplicación.</li>
+              <li>Datos de uso del sitio.</li>
               <li>Información de contacto.</li>
             </ul>
   
@@ -39,7 +39,7 @@
             <h6>4. Derechos del Usuario</h6>
             <p>
               Los usuarios tienen derecho a acceder, corregir y eliminar su información personal. Para ejercer estos 
-              derechos, contáctanos en [Dirección de Correo Electrónico].
+              derechos, contáctanos en revista.volcanesyraices@gmail.com
             </p>
   
             <h6>5. Cambios en el Aviso de Privacidad</h6>
@@ -50,7 +50,7 @@
   
             <h6>6. Contacto</h6>
             <p>
-              Si tienes alguna pregunta sobre este aviso de privacidad, por favor contáctanos en [Dirección de Correo Electrónico].
+              Si tienes alguna pregunta sobre este aviso de privacidad, por favor contáctanos en revista.volcanesyraices@gmail.com
             </p>
           </div>
           <div class="modal-footer">

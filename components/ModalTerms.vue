@@ -8,12 +8,12 @@
           </div>
           <div class="modal-body">
             <h5>TERMINOS Y CONDICIONES</h5>
-            <h6>Última actualización: [Fecha]</h6>
+            <h6>Última actualización: 2025</h6>
             
             <h6>1. Aceptación de los Términos</h6>
             <p>
-              Al acceder y usar [Nombre del Sitio/Aplicación], aceptas cumplir con estos Términos y Condiciones. 
-              Si no estás de acuerdo con alguna parte de estos términos, no debes usar nuestro sitio/aplicación.
+              Al acceder y usar Revista Volcanes y Raices, aceptas cumplir con estos Términos y Condiciones. 
+              Si no estás de acuerdo con alguna parte de estos términos, no debes usar nuestro sitio web.
             </p>
   
             <h6>2. Modificaciones a los Términos</h6>
@@ -58,7 +58,7 @@
   
             <h6>8. Contacto</h6>
             <p>
-              Si tienes alguna pregunta sobre estos Términos y Condiciones, por favor contáctanos en [Dirección de Correo Electrónico].
+              Si tienes alguna pregunta sobre estos Términos y Condiciones, por favor contáctanos en revista.volcanesyraices@gmail.com
             </p>
           </div>
           <div class="modal-footer">

@@ -3,7 +3,18 @@
 /* Qumpelka N12 desde /public/fonts */
 @font-face{
   font-family: 'QumpelkaN12';
-  src: url('/fonts/QumpelkaN12.woff2') format('woff2');
+  src: url('/fonts/QumpelkaN12-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* (Opcional) variante en negritas reales */
+@font-face{
+  font-family: 'QumpelkaN12';
+  src: url('/fonts/QumpelkaN12-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -47,6 +58,7 @@
   align-items: baseline;
   justify-content: center;
 }
+
 .brand-r{
   font-family: 'QumpelkaN12', serif;
   font-size: clamp(26px, 3.8vw, 40px);
@@ -54,7 +66,7 @@
 }
 
 .brand-evista{
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Georgia, 'Times New Roman', serif; 
   font-size: clamp(20px, 1.4vw, 18px);
   letter-spacing: .5px;
 }
@@ -119,7 +131,6 @@
 .burger i:nth-child(1){ top: 0; } 
 .burger i:nth-child(2){ top: 8px; } 
 .burger i:nth-child(3){ bottom: 0; }
-
 
 .nav-row { 
   background: #2e52a1; 

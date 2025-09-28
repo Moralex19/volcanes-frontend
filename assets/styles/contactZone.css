@@ -1,0 +1,121 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+
+/* Colores inspirados en la ficha (borde verde y esquinas azules) */
+:root{
+  --vr-border:#0fb3ab;           /* verde del marco */
+  --vr-ink:#0c3a3a;              /* títulos oscuros */
+  --vr-text:#111;                /* texto */
+  --vr-card-bg:#fff;             /* fondo hoja */
+  --vr-accent1:#11b3ab;          /* turquesa claro */
+  --vr-corner-teal:#10b5ad;      /* esquina verde-azulada */
+  --vr-corner-blue:#1a5fbf;      /* azul medio */
+  --vr-corner-navy:#3f4f67;      /* azul grisáceo */
+  --vr-gray:#e3e7ec;
+  --vr-black:#000;
+  --vr-white:#fff;
+}
+
+/* Tarjeta base con borde y sombra sutil */
+.vr-card{
+  position: relative;
+  max-width: 920px;
+  margin: 32px auto;
+  padding: 28px 22px 36px;
+  background: var(--vr-card-bg);
+  border: 6px solid var(--vr-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* Esquinas decorativas (superior-izquierda e inferior-derecha) */
+.vr-corner{
+  position:absolute; pointer-events:none;
+}
+.vr-corner--tl{
+  top:-6px; left:-6px; width: 36%;
+  aspect-ratio: 9/5; 
+  background:
+    linear-gradient(135deg, transparent 32%, var(--vr-corner-teal) 33%) no-repeat,
+    linear-gradient(135deg, transparent 43%, var(--vr-corner-blue) 44%) no-repeat 24% 32%/76% 80%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.vr-corner--br{
+  right:-6px; bottom:-6px; width: 40%;
+  aspect-ratio: 9/5;
+  background:
+    linear-gradient(315deg, transparent 32%, var(--vr-corner-teal) 33%) no-repeat,
+    linear-gradient(315deg, transparent 43%, var(--vr-corner-blue) 44%) no-repeat 24% 32%/76% 80%,
+    linear-gradient(315deg, transparent 58%, var(--vr-corner-navy) 59%) no-repeat 48% 52%/52% 60%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* Encabezados */
+.vr-header{ text-align:center; margin-bottom: 8px; }
+.vr-title{ color:#11a4a0; font-weight:800; letter-spacing:.04em; margin:0; }
+.vr-brand{ color:#11a4a0; font-family: "Georgia", serif; font-style: italic; margin:.15rem 0 .5rem; }
+.vr-section{ color:#000; font-family: "Georgia", serif; font-weight:700; margin: .25rem 0 1rem; }
+
+/* Separador fino estilo hoja */
+.vr-sep{
+  border:0; border-top:2px solid var(--vr-gray); margin: 10px 0 16px;
+}
+
+/* Formulario con líneas tipo “libreta” */
+.vr-form{ display:block; }
+.vr-row{ margin-bottom: 14px; }
+.vr-label{
+  display:block; font-weight:700; color:#000; margin-bottom: 4px;
+}
+.vr-label i{ margin-right:.5rem; }
+
+/* Inputs tipo línea (sin bordes gruesos) */
+.vr-input, .vr-textarea{
+  width:100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--vr-gray);
+  padding: 8px 6px;
+  outline: none;
+  color: var(--vr-text);
+  font-size: 1rem;
+  border-radius: 0;
+}
+.vr-input:focus, .vr-textarea:focus{
+  border-bottom-color: var(--vr-border);
+}
+
+.vr-two{
+  display:grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+
+/* Redes sociales: ícono a la izquierda (Instagram, Facebook, Gmail) */
+.vr-social{ display:grid; gap:10px; }
+.vr-social-item{ display:flex; align-items:center; gap:10px; }
+.vr-social-item i{
+  width:32px; height:32px; display:grid; place-items:center;
+  border:2px solid var(--vr-text); border-radius:8px;
+}
+
+/* Ayudas/errores */
+.vr-warn{ color:#b85c00; margin-top:4px; display:block; }
+.vr-error{ color:#b00020; text-align:center; margin:.5rem 0; }
+
+/* Acciones: botón negro con letra blanca (sin icono) */
+.vr-actions{ display:flex; justify-content:center; margin-top: 10px; }
+.vr-btn{
+  border:none; border-radius:12px; padding:.85rem 2rem; font-weight:800;
+  cursor:pointer; transition: transform .06s ease, opacity .2s ease;
+}
+.vr-btn:disabled{ opacity:.65; cursor:not-allowed; }
+.vr-btn:active{ transform: translateY(1px); }
+.vr-btn--black{ background: var(--vr-black); color: var(--vr-white); }
+
+/* Spinner minimal */
+.vr-spinner{ width:28px;height:28px;border-radius:50%;
+  border:3px solid #d9dde3;border-top-color:#111;animation:spin .9s linear infinite}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 860px){
+  .vr-two{ grid-template-columns: 1fr; }
+}

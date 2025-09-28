@@ -95,14 +95,14 @@ export default {
 .footer-section h4 {
   font-size: 0.9em;
   margin-bottom: 5px;
-  color: #ffffff;
+  color: #000000;
 }
 
 .footer-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #d1d1d1;
+  color: #000000;
   font-size: 0.8em;
 }
 

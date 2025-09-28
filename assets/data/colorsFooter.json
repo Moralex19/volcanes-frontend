@@ -1,7 +1,7 @@
 {
     "footer": {
       "backgroundColor": "#2e52a1",
-      "textColor": "#ffffff",
+      "textColor": "#000000",
       "linkColor": "#d1d1d1",
       "hoverLinkColor": "#ffffff",
       "borderColor": "rgba(255, 255, 255, 0.1)",

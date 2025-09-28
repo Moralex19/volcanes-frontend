@@ -16,7 +16,7 @@
       <!-- BRAND centrado con fuentes específicas -->
       <div class="brand">
         <div class="brand-top">
-          <span class="brand-r">R</span><span class="brand-evista">evista</span>
+          <span class="brand-r">R</span><span class="brand-evista">EVISTA</span>
         </div>
         <div class="brand-bottom">
           Volcanes y <span class="brand-r2">R</span>aíces

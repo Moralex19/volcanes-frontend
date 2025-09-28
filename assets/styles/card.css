@@ -18,7 +18,7 @@
 
 /* Botón azul sólido con letras blancas */
 .btn-primary {
-  background-color: #0000FF; 
+  background-color: #000000; 
   color: #FFFFFF;           
   border-radius: 50px;
   width: 120px;
@@ -27,5 +27,5 @@
 }
 
 .btn-primary:hover {
-  background-color: #0044cc; 
+  background-color: #000000; 
 }

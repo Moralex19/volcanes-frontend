@@ -21,6 +21,6 @@
     "texto-p": "#fafafa",
     "gradient1": "#2e9da1",
     "gradient2": "#2e9da1" ,
-    "button": "linear-gradient(to right, #6895c6,#007bff)"  
+    "button": "linear-gradient(to right, #000000,#000000)"  
   }
 }
