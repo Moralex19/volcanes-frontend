@@ -8,7 +8,8 @@ export default defineNuxtConfig({
 
   css: ['bootstrap/dist/css/bootstrap.min.css', '~/assets/styles/Services.css',
     '~/assets/styles/Services.css',
-    '~/assets/styles/WhoAreWe.css'
+    '~/assets/styles/WhoAreWe.css',
+    '~/assets/styles/ContactZone.css'
   ],
   
 
