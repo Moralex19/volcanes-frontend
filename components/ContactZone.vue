@@ -142,7 +142,7 @@ const submitForm = async ()=>{
   </section>
 </template>
 
-<style scoped>
+<style>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Great+Vibes&display=swap');
 
