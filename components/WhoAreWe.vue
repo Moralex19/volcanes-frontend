@@ -34,4 +34,5 @@ export default {
 };
 </script>
 
-<style src="../assets/styles/WhoAreWe.css"></style>
+<style src="../assets/styles/WhoAreWe.css">
+</style>

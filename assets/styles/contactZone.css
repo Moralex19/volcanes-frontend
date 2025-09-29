@@ -1,0 +1,121 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Great+Vibes&display=swap');
+
+/* ===== Paleta ===== */
+:root{
+  --vr-turq:#10b5ad;  /* marco/triángulo turquesa */
+  --vr-blue:#1a5fbf;  /* franja azul */
+  --vr-navy:#3f4f67;  /* franja azul gris */
+  --vr-paper:#fff;
+  --vr-gray:#e3e7ec;
+  --vr-gray300:#cfd6de;
+  --vr-black:#000;
+  --vr-white:#fff;
+}
+
+/* ===== Contenedor con marco y franjas (a prueba de recortes) ===== */
+.vr-sheet{
+  position: relative;
+  max-width: 920px;
+  margin: 28px auto;
+  padding: 26px 24px 36px;
+  background: var(--vr-paper);
+  border-radius: 10px;
+  /* Marco turquesa que no se corta + sombra */
+  box-shadow: 0 0 0 8px var(--vr-turq), 0 10px 30px rgba(0,0,0,.08);
+  overflow: visible;
+}
+
+/* Franjas con pseudo-elementos del contenedor */
+.vr-sheet::before,
+.vr-sheet::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+}
+.vr-sheet::before{
+  /* esquina superior izquierda, 2 capas */
+  top: 0; left: 0; width: 36%; aspect-ratio: 9/5;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background:
+    linear-gradient(135deg, transparent 31%, var(--vr-turq) 32%) no-repeat,
+    linear-gradient(135deg, transparent 44%, var(--vr-blue) 45%) no-repeat 22% 28%/78% 84%;
+}
+.vr-sheet::after{
+  /* esquina inferior derecha, 3 capas */
+  bottom: 0; right: 0; width: 42%; aspect-ratio: 9/5;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background:
+    linear-gradient(315deg, transparent 31%, var(--vr-turq) 32%) no-repeat,
+    linear-gradient(315deg, transparent 44%, var(--vr-blue) 45%) no-repeat 24% 40%/74% 76%,
+    linear-gradient(315deg, transparent 59%, var(--vr-navy) 60%) no-repeat 48% 58%/50% 58%;
+}
+
+/* ===== Encabezado ===== */
+.vr-header{ text-align:center; }
+.vr-title{
+  margin:0; font: 800 28px/1 "Playfair Display", serif;
+  color:#11a4a0; letter-spacing:.03em;
+}
+.vr-brand{
+  margin:4px 0 10px; font: 400 36px/1 "Great Vibes", cursive; color:#11a4a0;
+}
+.vr-section{
+  margin:0 0 14px; font: 700 30px/1 "Playfair Display", serif; color:#000;
+}
+
+/* ===== Separador ===== */
+.vr-sep{ border:0; border-top:2px solid var(--vr-gray); margin: 14px 0 18px; }
+
+/* ===== Formulario ===== */
+.vr-form{ margin-top: 6px; position: relative; z-index: 1; }
+.vr-row{ display:flex; align-items:center; gap:14px; margin: 12px 0; flex-wrap: wrap; }
+.vr-label{ flex: 0 0 330px; font-weight:700; color:#000; display:flex; align-items:center; gap:10px; }
+
+/* Íconos cuadrados */
+.vr-ico{
+  width:34px; height:34px; display:grid; place-items:center;
+  border:2px solid #000; border-radius:8px; background:#fff;
+}
+.vr-with-icon .vr-label{ gap:10px; }
+
+/* === CAJAS GRISES para escribir === */
+.vr-box{
+  flex: 1 1 420px;
+  background:#f7f8fa;             /* gris claro para diferenciar */
+  border:2px solid var(--vr-gray300);
+  border-radius: 10px;
+  padding:.7rem .9rem;
+  outline:none; font-size:1rem;
+}
+.vr-box::placeholder{ color:#98a1ac; }
+.vr-box:focus{ border-color: var(--vr-turq); box-shadow: 0 0 0 3px rgba(16,181,173,.15); }
+.vr-multi{ min-height:110px; resize: vertical; }
+
+/* Redes */
+.vr-social{ flex: 1 1 420px; }
+.vr-social-row{ display:flex; align-items:center; gap:12px; margin:6px 0; }
+
+/* Feedback */
+.vr-error{ color:#b00020; text-align:center; }
+
+/* ===== Botón negro con letras blancas ===== */
+.vr-actions{ display:flex; justify-content:center; margin-top: 14px; }
+.vr-btn.vr-btn--black{
+  background:#000 !important;
+  color:#fff !important;
+  border:none; border-radius:12px;
+  padding:.85rem 2rem; font-weight:800; cursor:pointer;
+}
+.vr-btn:disabled{ opacity:.65; cursor:not-allowed; }
+
+/* Spinner (por si lo usas) */
+.vr-spinner{ width:28px;height:28px;border-radius:50%;
+  border:3px solid #d9dde3;border-top-color:#111;animation:spin .9s linear infinite }
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* ===== Responsive ===== */
+@media (max-width: 860px){
+  .vr-label{ flex-basis:100%; }
+  .vr-box, .vr-social{ flex-basis:100%; }
+}

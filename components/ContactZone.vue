@@ -197,37 +197,71 @@ const submitForm = async ()=>{
 }
 
 /* ===== Encabezado ===== */
-.vr-header{ text-align:center; }
-.vr-title{
-  margin:0; font: 800 28px/1 "Playfair Display", serif;
+.vr-header { 
+  text-align:center; 
+}
+
+.vr-title {
+  margin:0; 
+  font-family: Georgia, 'Times New Roman', serif;
   color:#11a4a0; letter-spacing:.03em;
 }
-.vr-brand{
-  margin:4px 0 10px; font: 400 36px/1 "Great Vibes", cursive; color:#11a4a0;
+
+.vr-brand {
+  margin:4px 0 10px; 
+  font-family: 'Playball', cursive;
 }
-.vr-section{
-  margin:0 0 14px; font: 700 30px/1 "Playfair Display", serif; color:#000;
+.vr-section {
+  margin:0 0 14px; 
+  font: 700 30px/1 "Times New Roman", Times, serif; 
+  color:#000;
 }
 
 /* ===== Separador ===== */
-.vr-sep{ border:0; border-top:2px solid var(--vr-gray); margin: 14px 0 18px; }
+.vr-sep { 
+border:0; 
+border-top:2px solid var(--vr-gray); 
+margin: 14px 0 18px; 
+}
 
 /* ===== Formulario ===== */
-.vr-form{ margin-top: 6px; position: relative; z-index: 1; }
-.vr-row{ display:flex; align-items:center; gap:14px; margin: 12px 0; flex-wrap: wrap; }
-.vr-label{ flex: 0 0 330px; font-weight:700; color:#000; display:flex; align-items:center; gap:10px; }
+.vr-form { 
+  margin-top: 6px; 
+  position: relative; 
+  z-index: 1; 
+}
+.vr-row { 
+  display:flex; 
+  align-items:center; 
+  gap:14px; 
+  margin: 12px 0; 
+  flex-wrap: wrap; 
+}
+.vr-label { 
+  flex: 0 0 330px; 
+  font: 300 20px/1 "Times New Roman", Times, serif; 
+  color:#000; 
+  display:flex; 
+  align-items:center; gap:10px; }
 
 /* Íconos cuadrados */
 .vr-ico{
-  width:34px; height:34px; display:grid; place-items:center;
-  border:2px solid #000; border-radius:8px; background:#fff;
+  width:34px; 
+  height:34px; 
+  display:grid; 
+  place-items:center;
+  border:2px solid #000; 
+  border-radius:8px; 
+  background:#fff;
 }
-.vr-with-icon .vr-label{ gap:10px; }
+.vr-with-icon .vr-label {
+   gap:10px; 
+  }
 
 /* === CAJAS GRISES para escribir === */
 .vr-box{
   flex: 1 1 420px;
-  background:#f7f8fa;             /* gris claro para diferenciar */
+  background:#f7f8fa;   
   border:2px solid var(--vr-gray300);
   border-radius: 10px;
   padding:.7rem .9rem;

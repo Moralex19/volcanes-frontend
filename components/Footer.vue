@@ -5,9 +5,6 @@
       <ul class="footer-list">
         <li>{{ colors.footer.l1 }}</li>
         <li>{{ colors.footer.l2 }}</li>
-        <li>{{ colors.footer.l3 }}</li>
-        <li>{{ colors.footer.l4 }}</li>
-        <li>{{ colors.footer.l5 }}</li>
       </ul>
     </div>
 
@@ -33,7 +30,6 @@
       <p>{{ colors.footer.p1 }}</p>
       <p>{{ colors.footer.p2 }}</p>
       <p>{{ colors.footer.p3 }}</p>
-      <p>{{ colors.footer.p4 }}</p>
     </div>
 
     <p class="footer-links">
@@ -95,14 +91,14 @@ export default {
 .footer-section h4 {
   font-size: 0.9em;
   margin-bottom: 5px;
-  color: #000000;
+  color: #FFFFFF;
 }
 
 .footer-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #000000;
+  color: #FFFFFF;
   font-size: 0.8em;
 }
 
@@ -138,11 +134,11 @@ export default {
   text-decoration: none;
   padding: 0 4px;
   transition: color 0.3s, text-decoration 0.3s;
-  color: #000000; 
+  color: #FFFFFF; 
 }
 
 .footer-links a:hover {
-  color: #333333; 
+  color: #FFFFFF; 
 }
 
 .footer p {

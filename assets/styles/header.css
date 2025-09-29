@@ -161,12 +161,12 @@
   transition: color .2s ease; 
 }
 .categories .cat-list a:hover { 
-  color: #ffd2d4; 
+  color: #808080; 
 }
 
 /* Menú colapsable (móvil) */
 .mobile-menu { 
-  background: #2e52a1; 
+  background: #808080; 
   padding: 8px 0 14px; 
 }
 

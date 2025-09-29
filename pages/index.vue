@@ -36,7 +36,7 @@ import ContactZone from '~/components/ContactZone.vue'
     <!-- Catálogo (embed) -->
     <section id="catalogo" class="py-5 bg-white section-anchor">
       <div class="container">
-        <h2 class="mb-4 text-center">Revista Volcanes</h2>
+        <h2 class="mb-4 text-center vr-title">Revista Volcanes</h2>
         <div class="ratio ratio-16x9">
           <iframe
           src="https://e.issuu.com/embed.html?d=pinocho&u=revista.volcanesyraices"
@@ -70,13 +70,25 @@ import ContactZone from '~/components/ContactZone.vue'
 }
 .overlay {
   position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);text-align:center;color:#fff;z-index:3;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);text-align:center;
+  color:#fff;
+  z-index:3;
 }
 video {
-  width:100%;height:100%;
+  width:100%;
+  height:100%;
   object-fit:cover;
   position:absolute;
-  top:0;left:0;z-index:1;
+  top:0;
+  left:0;
+  z-index:1;
 }
+.vr-title {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+}
+section#catalogo h2 { color: #000 !important; }
+
 </style>

@@ -71,7 +71,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 
 body {
-  font-family: inherit;
+  font-family: "Times New Roman", Times, serif;
 }
 
 #app {
@@ -132,14 +132,14 @@ body {
 }
 
 .slide-title {
-  font-family: inherit; 
+  font-family: "Times New Roman", Times, serif; 
   font-size: 2rem; 
   font-weight: 800; 
   margin: 0; 
 }
 
 .slide-description {
-  font-family: inherit; 
+  font-family: "Times New Roman", Times, serif; 
   font-size: 1rem; 
   margin: 0;
   color: #ffffff; 
